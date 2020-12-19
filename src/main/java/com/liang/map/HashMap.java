@@ -1,4 +1,4 @@
-package com.liang.hashmap;
+package com.liang.map;
 
 import javax.swing.tree.TreeNode;
 import java.io.Serializable;
@@ -6,6 +6,28 @@ import java.util.AbstractMap;
 import java.util.Map;
 
 /**
+ * 写在前面：
+ * 1、继承：
+ * HashTable继承自Dirctionary，HashMap继承自AbstractMap，二者均实现了Map接口；
+ * 2、线程安全性：
+ * HashTable的方法是同步的，即是线程安全的。
+ * HaspMap的方法不是同步的，不是线程安全的的。
+ * 在多线程并发的情况下，我们可以直接使用HashTable，如果 要使用HashMap，就需要自行对HashMap的同步处理。
+ * 3、键值：
+ * HashTable中不允许有null键和null值，
+ * HashMap中允许出现一个null键，可以存在一个或者多个键的值都为null。
+ * 程序中，对于HashMap，如果使用get(参数为 键)方法时，返回结果为null，可能是该键不存在，也可能是该键对应的值为null，这就出现了结果的二义性。
+ * 因此，在HashMap中，我们不能使用get()方法来查询键 对应的值，应该使用containskey()方法。
+ * 4、遍历：
+ * 这两个在遍历方式的实现不同。HashTable和HashMap两者都实现了Iterator。
+ * 但是，由于历史原因，HashTable还使用了Enumeration。
+ * 5、哈希值：
+ * HashTable是直接使用对象的hashCode。
+ * HashMap是重新计算hash值。
+ * 6、扩容：
+ * HashTable和HashMap的底层实现的数组和初始大小和扩容方式。
+ * HashTable初始大小为11，并且每次扩容都为：2*old+1。HashMap的默认大小为16，并且一 定是2的指数，每次扩容都为old*2。
+ *
  * 散列表基于map接口实现。这实现提供了所有可选的映射操作，并允许key和value为null。
  * hashMap大致等同于散列表，但它是线程不安全的并允许空值
  * hashMap是无序的
