@@ -1,4 +1,4 @@
-package com.liang.Collection.List;
+package com.liang.collection.list;
 
 import java.util.AbstractList;
 import java.util.Arrays;
